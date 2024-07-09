@@ -1,0 +1,72 @@
+import java.util.*;
+
+public class ATMMachine {
+     public static void main(String[] args) {
+        
+        int atmPin = 9510;
+        Scanner sc = new Scanner(System.in);
+        int balance = 50000 , deposit = 0, withdraw = 0;
+        System.out.println("Enter the ATM pin");
+        int pin = sc.nextInt();
+        if(atmPin == pin){
+            while(true){
+                System.out.println("Welcome to ATM Machine !!!\n1.Deposit Amount\n2.Withdraw Amount\n3.Check Available Amount\n4.View Mini Statement\n5.Exit");
+                System.out.println("Enter your choice: ");
+                int choice =sc.nextInt();
+
+            switch(choice){
+
+                case 1:
+                    System.out.println("Enter amount you want to deposit: ");
+                    deposit = sc.nextInt();
+                    System.out.println("Deposited Successfully");
+
+                    balance += deposit;
+                    System.out.println("Available Balance is : "+balance);
+                    System.out.println();
+                    break; 
+
+                case 2:
+                    System.out.println("Enter your withdrawal Amount");
+                    withdraw = sc.nextInt();
+                    if(withdraw%500==0){
+                    
+                        if(balance >= withdraw){
+                        balance -= withdraw;
+                        System.out.println("Collect the Cash : "+withdraw);
+                        System.out.println("Available Balance is : "+balance);
+                        } 
+                        else
+                            System.out.println("Insufficent balance.....");
+                    } 
+                    else
+                    System.out.println("Please enter 500 only..");
+                    System.out.println();
+                    break;
+
+                case 3:
+                    System.out.println("Check Balance: "+balance);
+                    System.out.println();
+                    break;
+
+                case 4:
+                    System.out.println("Welcome all in one mini Statement");
+                    System.out.println("Available Amount: "+balance);
+                    System.out.println("withdraw Balance: "+withdraw);
+                    System.out.println("Amount Deposited: "+deposit);
+                    System.err.println("Thanks for Coming !!");
+                    break;
+
+                case 5:
+                    System.exit(0);
+                    break;
+             }
+
+            }
+        }
+        else{
+            System.out.println("Incorrect ATM pin !!! ");
+            System.exit(0);
+        }
+    }    
+}
